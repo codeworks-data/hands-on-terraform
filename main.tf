@@ -1,7 +1,7 @@
 # Top-level folder under an organization.
 resource "google_folder" "CodeLabTf" {
   display_name = "CodeLab tf"
-  parent       = "${var.organization}"
+  parent       = var.organization
 }
 
 # Folder nested under another folder.
@@ -18,9 +18,9 @@ resource "google_folder" "DevOps" {
 
 # creation and management of a GCP project
 resource "google_project" "hands-on-tf" {
-  project_id      = "${var.project}"
-  name            = "${var.project}"
-  billing_account = "${var.billing_account}"
+  project_id      = var.project
+  name            = var.project
+  billing_account = var.billing_account
   folder_id       = google_folder.DevOps.name
 }
 
@@ -29,7 +29,7 @@ resource "google_project" "hands-on-tf" {
 resource "google_storage_bucket" "iac-dev" {
   project       = google_project.hands-on-tf.project_id
   name          = "iac-dev-tf"
-  location      = "${var.location}"
+  location      = var.location
   storage_class = "STANDARD"
   force_destroy = true
 }
@@ -40,7 +40,7 @@ resource "google_compute_instance" "default-gce" {
   project      = google_project.hands-on-tf.project_id
   name         = "terraform-vm"
   machine_type = "n1-standard-1"
-  zone         = "${var.region}"
+  zone         = var.region
 
   boot_disk {
     initialize_params {
