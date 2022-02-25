@@ -1,6 +1,6 @@
 variable "organization" {
   description = "The ID of the organization in the Top level"
-  type    = string
+  type        = string
 }
 
 
@@ -11,14 +11,14 @@ variable "billing_account" {
 
 variable "project" {
   description = "The ID of the project"
-  type    = string
+  type        = string
 }
 
 
 variable "location" {
   description = "The location for a GCS bucket to create"
-  type    = string
-  default = "EU"
+  type        = string
+  default     = "EU"
 }
 
 
@@ -31,7 +31,5 @@ variable "region" {
 
 variable "image_dir" {
   description = "The directory containing images"
-  type    = string
+  type        = string
 }
-
-
